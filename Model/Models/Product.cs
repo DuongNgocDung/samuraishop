@@ -1,56 +1,49 @@
-﻿using System;
+﻿using Model.Abstract;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
     [Table("products")]
-    public class Product
+    public class Product : Auditable
     {
         [Key]
-        public string ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //auto_increment
+        public int ID { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string Name { get; set; }
 
         [Required]
+        [MaxLength(250)]
+        [Column(TypeName = "varchar")]
         public string Alias { get; set; }
 
-        public string CategoryID { get; set; }
+        [Required]
+        public int CategoryID { get; set; }
 
+        [MaxLength(250)s]
         public string Image { get; set; }
 
         public string MoreImages { get; set; }
 
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
-        public string Promotion { get; set; }
+        public decimal? Promotion { get; set; }
 
-        public string Warranty { get; set; }
+        public int? Warranty { get; set; }
 
+        [MaxLength(500)]
         public string Description { get; set; }
 
         public string Content { get; set; }
 
-        public string MetaKeyword { get; set; }
+        public bool? HomeFlag { get; set; }
 
-        public string MetaDescription { get; set; }
+        public bool? HotFlag { get; set; }
 
-        [Required]
-        public string Status { get; set; }
-
-        public string HomeFlag { get; set; }
-
-        public string HotFlag { get; set; }
-
-        public string ViewCount { get; set; }
-
-        public DateTime? CreateDate { get; set; }
-
-        public string CreateBy { get; set; }
-
-        public DateTime? UpdateDate { get; set; }
-
-        public string UpdateBy { get; set; }
+        public int? ViewCount { get; set; }
     }
 }

@@ -7,8 +7,11 @@ namespace Model.Models
     public class MenuGroup
     {
         [Key]
-        public string ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
     }
 }

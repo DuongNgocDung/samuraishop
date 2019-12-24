@@ -7,23 +7,34 @@ namespace Model.Models
     public class SupportOnline
     {
         [Key]
-        public string ID { get; set; }
-
-        public string Name { get; set; }
-
-        public string Department { get; set; }
-
-        public string Skype { get; set; }
-
-        public string Mobile { get; set; }
-
-        public string Email { get; set; }
-
-        public string Yahoo { get; set; }
-
-        public string Facebook { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         [Required]
-        public string Status { get; set; }
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        [MaxLength(50)]
+        public string Department { get; set; }
+
+        [MaxLength(50)]
+        public string Skype { get; set; }
+
+        [MaxLength(50)]
+        public string Mobile { get; set; }
+
+        [MaxLength(50)]
+        public string Email { get; set; }
+
+        [MaxLength(50)]
+        public string Yahoo { get; set; }
+
+        [MaxLength(50)]
+        public string Facebook { get; set; }
+
+        public int? DisplayOrder { get; set; }
+
+        [Required]
+        public bool Status { get; set; }
     }
 }

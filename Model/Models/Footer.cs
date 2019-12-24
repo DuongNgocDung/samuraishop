@@ -7,6 +7,7 @@ namespace Model.Models
     public class Footer
     {
         [Key]
+        [MaxLength(50)] // những cái là string thì nên set maxlength để không tốn bộ nhớ
         public string ID { get; set; }
 
         [Required]

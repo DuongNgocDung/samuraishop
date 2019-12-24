@@ -7,9 +7,11 @@ namespace Model.Models
     public class PostTag
     {
         [Key]
-        public string PostID { get; set; }
+        public int PostID { get; set; }
 
         [Key]
+        [MaxLength(50)]
+        [Column(TypeName = "varchar")]
         public string TagID { get; set; }
     }
 }

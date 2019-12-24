@@ -7,22 +7,27 @@ namespace Model.Models
     public class Slide
     {
         [Key]
-        public string ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string Name { get; set; }
 
+        [MaxLength(250)]
         public string Description { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string Image { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string URL { get; set; }
 
-        public string DisplayPrder { get; set; }
+        public int? DisplayPrder { get; set; }
 
         [Required]
-        public string Status { get; set; }
+        public bool Status { get; set; }
     }
 }

@@ -7,19 +7,24 @@ namespace Model.Models
     public class Menu
     {
         [Key]
-        public string ID { get; set; }
-
-        public string Name { get; set; }
-
-        public string URL { get; set; }
-
-        public string DisplayOrder { get; set; }
-
-        public string GroupID { get; set; }
-
-        public string Target { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         [Required]
-        public string Status { get; set; }
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        [Required]
+        [MaxLength(250)]
+        public string URL { get; set; }
+
+        public int? DisplayOrder { get; set; }
+
+        public int GroupID { get; set; }
+
+        [MaxLength(10)]
+        public string Target { get; set; }
+
+        public bool Status { get; set; }
     }
 }

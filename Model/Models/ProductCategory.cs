@@ -1,44 +1,36 @@
-﻿using System;
+﻿using Model.Abstract;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
     [Table("product_categories")]
-    public class ProductCategory
+    public class ProductCategory : Auditable
     {
         [Key]
-        public string ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string Name { get; set; }
 
         [Required]
+        [MaxLength(250)]
+        [Column(TypeName = "varchar")]
         public string Alias { get; set; }
 
+        [MaxLength(500)]
         public string Description { get; set; }
 
-        public string ParentID { get; set; }
+        public int? ParentID { get; set; }
 
-        public string DisplayOrder { get; set; }
+        public int? DisplayOrder { get; set; }
 
+        [MaxLength(250)]
         public string Image { get; set; }
 
-        public string MetaKeyword { get; set; }
-
-        public string MetaDescription { get; set; }
-
-        [Required]
-        public string Stauts { get; set; }
-
-        public string HomeFlag { get; set; }
-
-        public DateTime? CreateDate { get; set; }
-
-        public string CreateBy { get; set; }
-
-        public DateTime? UpdateDate { get; set; }
-
-        public string UpdateBy { get; set; }
+        public bool? HomeFlag { get; set; }
     }
 }

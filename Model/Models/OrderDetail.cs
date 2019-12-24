@@ -7,12 +7,11 @@ namespace Model.Models
     public class OrderDetail
     {
         [Key]
-        public string ID { get; set}
+        public int ProductID { get; set}
 
         [Key]
-        public string OrderID { get; set; }
+        public int OrderID { get; set; }
 
-        [Required]
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

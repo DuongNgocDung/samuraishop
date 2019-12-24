@@ -7,13 +7,16 @@ namespace Model.Models
     public class SystemConfig
     {
         [Key]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         [Required]
+        [MaxLength(50)]
+        [Column(TypeName = "varchar")]
         public string Code { get; set; }
-
+        
+        [MaxLength(50)]
         public string ValueString { get; set; }
 
-        public string ValueInt { get; set; }
+        public int? ValueInt { get; set; }
     }
 }

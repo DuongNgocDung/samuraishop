@@ -7,9 +7,11 @@ namespace Model.Models
     public class ProductTag
     {
         [Key]
-        public string ProductID { get; set; }
+        public int ProductID { get; set; }
 
         [Key]
+        [MaxLength(50)]
+        [Column(TypeName = "varchar")]
         public string TagID { get; set; }
     }
 }

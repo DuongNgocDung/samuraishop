@@ -8,10 +8,13 @@ namespace Model.Models
     public class VisistorStatistic
     {
         [Key]
-        public string ID { get; set; }
+        public Guid ID { get; set; }
 
-        public DateTime? VisistedDate { get; set; }
+        [Required]
+        public DateTime VisistedDate { get; set; }
 
+        [Required]
+        [MaxLength(50)]
         public string IPAddress { get; set; }
     }
 }
