@@ -56,6 +56,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{08a7ed15-771f-48a9-ac97-b2094912fd59}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{dfe4ad87-fe3d-470f-ac51-01fcbd33ab86}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8fb192df-8632-48ba-a3f2-888437a2beb6}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{64d7acd0-b818-4d34-b0eb-5fd50a428c91}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Web\Web.csproj">
       <Project>{1799f953-3a78-45a6-9a14-79bed99d4f53}</Project>
       <Name>Web</Name>
