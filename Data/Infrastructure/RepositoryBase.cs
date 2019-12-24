@@ -16,6 +16,9 @@ namespace Data.Infrastructure
         private SamuraiShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
+        /// <summary>
+        /// Create and Dispose SamuraiShopDbContext
+        /// </summary>
         protected IDbFactory DbFactory
         {
             get;
