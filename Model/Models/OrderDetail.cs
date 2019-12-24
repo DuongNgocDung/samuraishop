@@ -3,13 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
-    [Table("order_detaails")]
+    [Table("order_details")]
     public class OrderDetail
     {
         [Key]
-        public int ProductID { get; set}
+        [Column(Order = 1)]
+        public int ProductID { get; set; }
 
         [Key]
+        [Column(Order = 2)]
         public int OrderID { get; set; }
 
         public int Quantity { get; set; }

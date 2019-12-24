@@ -57,19 +57,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{567c14b9-1d9e-4c58-9112-a841a94b4b1d}</Project>
+      <Project>{08a7ed15-771f-48a9-ac97-b2094912fd59}</Project>
       <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{4dade8b5-e542-49b7-a6cf-c55dd6dcf41e}</Project>
+      <Project>{dfe4ad87-fe3d-470f-ac51-01fcbd33ab86}</Project>
       <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{6adc19c8-3973-4c6e-9d2d-f11c67d1713d}</Project>
+      <Project>{8fb192df-8632-48ba-a3f2-888437a2beb6}</Project>
       <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{192e9830-d039-4991-8920-4c9063ebf531}</Project>
+      <Project>{64d7acd0-b818-4d34-b0eb-5fd50a428c91}</Project>
       <Name>Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web\Web.csproj">

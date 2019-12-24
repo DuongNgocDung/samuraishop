@@ -3,16 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Model.Abstract
 {
-    public abstract class Auditable : IAuditable
+    public class Auditable
     {
-        [Required]
-        public bool Status { get; set; }
-
-        [MaxLength(256)]
+        [MaxLength(250)]
         public string MetaKeyword { get; set; }
 
-        [MaxLength(256)]
+        [MaxLength(250)]
         public string MetaDescription { get; set; }
+
+        [Required]
+        public bool Status { get; set; }
 
         public DateTime? CreateDate { get; set; }
 

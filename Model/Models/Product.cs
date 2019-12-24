@@ -24,7 +24,7 @@ namespace Model.Models
         [Required]
         public int CategoryID { get; set; }
 
-        [MaxLength(250)s]
+        [MaxLength(250)]
         public string Image { get; set; }
 
         public string MoreImages { get; set; }

@@ -9,7 +9,7 @@ namespace Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         [Required]
         [MaxLength(250)]
