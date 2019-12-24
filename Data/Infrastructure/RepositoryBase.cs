@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Infrastructure
 {
     /// <summary>
     /// thực thi những class đã định nghĩa trong IRepository
     /// </summary>
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region Properties
+
         private SamuraiShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
@@ -22,14 +21,26 @@ namespace Data.Infrastructure
             get;
             private set;
         }
+
         protected SamuraiShopDbContext DbContext
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
-        #endregion
 
+        #endregion Properties
+
+        /// <summary>
+        /// cái repo base này cần 1 cái dbFactory truyền vô
+        /// </summary>
+        /// <param name="dbFactory"></param>
+        protected RepositoryBase(IDbFactory dbFactory)
+        {
+            DbFactory = dbFactory;
+            dbSet = DbContext.Set<T>();
+        }
 
         #region Implementation
+
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
@@ -58,7 +69,7 @@ namespace Data.Infrastructure
             return dbSet.Find(id);
         }
 
-        public virtual IEnumerable<T> GetMany(Expression<Func<T,bool>> where, string includes)
+        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where, string includes)
         {
             return dbSet.Where(where).ToList();
         }
@@ -70,7 +81,7 @@ namespace Data.Infrastructure
 
         public IQueryable<T> GetAll(string[] includes = null)
         {
-            if(includes != null && includes.Count() > 0)
+            if (includes != null && includes.Count() > 0)
             {
                 var query = dataContext.Set<T>().Include(includes.First());
                 foreach (var include in includes.Skip(1))
@@ -81,12 +92,12 @@ namespace Data.Infrastructure
             return dataContext.Set<T>().AsQueryable();
         }
 
-        public T GetSingleByCondition(Expression<Func<T,bool>> expression, string[] includes = null)
+        public T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
         {
             return GetAll(includes).FirstOrDefault(expression);
         }
 
-        public virtual IQueryable<T> GetMulti(Expression<Func<T,bool>> predicate, string[] includes)
+        public virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes)
         {
             if (includes != null && includes.Count() > 0)
             {
@@ -99,7 +110,7 @@ namespace Data.Infrastructure
             return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
         }
 
-        public virtual IQueryable<T> GetMultiPaging(Expression<Func<T,bool>> predicate, out int total, int index = 0, int size = 50, string[] includes = null)
+        public virtual IQueryable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 50, string[] includes = null)
         {
             int skipCount = index * size;
             IQueryable<T> _resetSet;
@@ -121,10 +132,11 @@ namespace Data.Infrastructure
             return _resetSet.AsQueryable();
         }
 
-        public bool CheckContains(Expression<Func<T,bool>> predicate)
+        public bool CheckContains(Expression<Func<T, bool>> predicate)
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
-        #endregion
+
+        #endregion Implementation
     }
 }
