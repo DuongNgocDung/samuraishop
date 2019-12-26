@@ -1,5 +1,5 @@
 ﻿using Model.Abstract;
-using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +10,7 @@ namespace Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         [Required]
         [MaxLength(250)]
@@ -32,5 +32,7 @@ namespace Model.Models
         public string Image { get; set; }
 
         public bool? HomeFlag { get; set; }
+
+        public virtual IEnumerable<Post> Posts { get; set; }
     }
 }

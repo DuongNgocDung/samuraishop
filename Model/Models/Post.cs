@@ -1,5 +1,5 @@
 ﻿using Model.Abstract;
-using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +10,7 @@ namespace Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         [Required]
         [MaxLength(250)]
@@ -37,5 +37,10 @@ namespace Model.Models
         public bool? HotFlag { get; set; }
 
         public int? ViewCount { get; set; }
+
+        [ForeignKey("CategoryID")]
+        public virtual PostCategory PostCategory { get; set; }
+
+        public virtual IEnumerable<PostTag> PostTags { get; set; }
     }
 }

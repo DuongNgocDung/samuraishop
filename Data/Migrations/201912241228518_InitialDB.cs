@@ -37,7 +37,9 @@
                         Target = c.String(maxLength: 10),
                         Status = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.menu_groups", t => t.GroupID, cascadeDelete: true)
+                .Index(t => t.GroupID);
             
             CreateTable(
                 "dbo.order_details",
@@ -47,7 +49,11 @@
                         OrderID = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.ProductID, t.OrderID });
+                .PrimaryKey(t => new { t.ProductID, t.OrderID })
+                .ForeignKey("dbo.orders", t => t.OrderID, cascadeDelete: true)
+                .ForeignKey("dbo.products", t => t.ProductID, cascadeDelete: true)
+                .Index(t => t.ProductID)
+                .Index(t => t.OrderID);
             
             CreateTable(
                 "dbo.orders",
@@ -64,101 +70,6 @@
                         Status = c.Boolean(nullable: false),
                         CreateDate = c.DateTime(),
                         CreateBy = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.pages",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 250),
-                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
-                        Content = c.String(),
-                        MetaKeyword = c.String(maxLength: 250),
-                        MetaDescription = c.String(maxLength: 250),
-                        Status = c.Boolean(nullable: false),
-                        CreateDate = c.DateTime(),
-                        CreateBy = c.String(maxLength: 50),
-                        UpdateDate = c.DateTime(),
-                        UpdateBy = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.post_categories",
-                c => new
-                    {
-                        ID = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 250),
-                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
-                        Description = c.String(maxLength: 500),
-                        ParentID = c.Int(),
-                        DisplayOrder = c.Int(),
-                        Image = c.String(maxLength: 250),
-                        HomeFlag = c.Boolean(),
-                        MetaKeyword = c.String(maxLength: 250),
-                        MetaDescription = c.String(maxLength: 250),
-                        Status = c.Boolean(nullable: false),
-                        CreateDate = c.DateTime(),
-                        CreateBy = c.String(maxLength: 50),
-                        UpdateDate = c.DateTime(),
-                        UpdateBy = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.posts",
-                c => new
-                    {
-                        ID = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 250),
-                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
-                        CategoryID = c.Int(nullable: false),
-                        Image = c.String(maxLength: 250),
-                        Description = c.String(maxLength: 500),
-                        Content = c.String(),
-                        HomeFlag = c.Boolean(),
-                        HotFlag = c.Boolean(),
-                        ViewCount = c.Int(),
-                        MetaKeyword = c.String(maxLength: 250),
-                        MetaDescription = c.String(maxLength: 250),
-                        Status = c.Boolean(nullable: false),
-                        CreateDate = c.DateTime(),
-                        CreateBy = c.String(maxLength: 50),
-                        UpdateDate = c.DateTime(),
-                        UpdateBy = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.post_tags",
-                c => new
-                    {
-                        PostID = c.Int(nullable: false),
-                        TagID = c.String(nullable: false, maxLength: 50, unicode: false),
-                    })
-                .PrimaryKey(t => new { t.PostID, t.TagID });
-            
-            CreateTable(
-                "dbo.product_categories",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 250),
-                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
-                        Description = c.String(maxLength: 500),
-                        ParentID = c.Int(),
-                        DisplayOrder = c.Int(),
-                        Image = c.String(maxLength: 250),
-                        HomeFlag = c.Boolean(),
-                        MetaKeyword = c.String(maxLength: 250),
-                        MetaDescription = c.String(maxLength: 250),
-                        Status = c.Boolean(nullable: false),
-                        CreateDate = c.DateTime(),
-                        CreateBy = c.String(maxLength: 50),
-                        UpdateDate = c.DateTime(),
-                        UpdateBy = c.String(maxLength: 50),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -188,6 +99,119 @@
                         UpdateDate = c.DateTime(),
                         UpdateBy = c.String(maxLength: 50),
                     })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.product_categories", t => t.CategoryID, cascadeDelete: true)
+                .Index(t => t.CategoryID);
+            
+            CreateTable(
+                "dbo.product_categories",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 250),
+                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
+                        Description = c.String(maxLength: 500),
+                        ParentID = c.Int(),
+                        DisplayOrder = c.Int(),
+                        Image = c.String(maxLength: 250),
+                        HomeFlag = c.Boolean(),
+                        MetaKeyword = c.String(maxLength: 250),
+                        MetaDescription = c.String(maxLength: 250),
+                        Status = c.Boolean(nullable: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 50),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.pages",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 250),
+                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
+                        Content = c.String(),
+                        MetaKeyword = c.String(maxLength: 250),
+                        MetaDescription = c.String(maxLength: 250),
+                        Status = c.Boolean(nullable: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 50),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.post_categories",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 250),
+                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
+                        Description = c.String(maxLength: 500),
+                        ParentID = c.Int(),
+                        DisplayOrder = c.Int(),
+                        Image = c.String(maxLength: 250),
+                        HomeFlag = c.Boolean(),
+                        MetaKeyword = c.String(maxLength: 250),
+                        MetaDescription = c.String(maxLength: 250),
+                        Status = c.Boolean(nullable: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 50),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.posts",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 250),
+                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
+                        CategoryID = c.Int(nullable: false),
+                        Image = c.String(maxLength: 250),
+                        Description = c.String(maxLength: 500),
+                        Content = c.String(),
+                        HomeFlag = c.Boolean(),
+                        HotFlag = c.Boolean(),
+                        ViewCount = c.Int(),
+                        MetaKeyword = c.String(maxLength: 250),
+                        MetaDescription = c.String(maxLength: 250),
+                        Status = c.Boolean(nullable: false),
+                        CreateDate = c.DateTime(),
+                        CreateBy = c.String(maxLength: 50),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.post_categories", t => t.CategoryID, cascadeDelete: true)
+                .Index(t => t.CategoryID);
+            
+            CreateTable(
+                "dbo.post_tags",
+                c => new
+                    {
+                        PostID = c.Int(nullable: false),
+                        TagID = c.String(nullable: false, maxLength: 50, unicode: false),
+                    })
+                .PrimaryKey(t => new { t.PostID, t.TagID })
+                .ForeignKey("dbo.posts", t => t.PostID, cascadeDelete: true)
+                .ForeignKey("dbo.tags", t => t.TagID, cascadeDelete: true)
+                .Index(t => t.PostID)
+                .Index(t => t.TagID);
+            
+            CreateTable(
+                "dbo.tags",
+                c => new
+                    {
+                        ID = c.String(nullable: false, maxLength: 50, unicode: false),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        Type = c.String(nullable: false, maxLength: 50),
+                    })
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
@@ -197,7 +221,11 @@
                         ProductID = c.Int(nullable: false),
                         TagID = c.String(nullable: false, maxLength: 50, unicode: false),
                     })
-                .PrimaryKey(t => new { t.ProductID, t.TagID });
+                .PrimaryKey(t => new { t.ProductID, t.TagID })
+                .ForeignKey("dbo.products", t => t.ProductID, cascadeDelete: true)
+                .ForeignKey("dbo.tags", t => t.TagID, cascadeDelete: true)
+                .Index(t => t.ProductID)
+                .Index(t => t.TagID);
             
             CreateTable(
                 "dbo.slides",
@@ -242,16 +270,6 @@
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.tags",
-                c => new
-                    {
-                        ID = c.String(nullable: false, maxLength: 50),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        Type = c.String(nullable: false, maxLength: 50),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
                 "dbo.visistor_statistics",
                 c => new
                     {
@@ -265,18 +283,36 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.product_tags", "TagID", "dbo.tags");
+            DropForeignKey("dbo.product_tags", "ProductID", "dbo.products");
+            DropForeignKey("dbo.post_tags", "TagID", "dbo.tags");
+            DropForeignKey("dbo.post_tags", "PostID", "dbo.posts");
+            DropForeignKey("dbo.posts", "CategoryID", "dbo.post_categories");
+            DropForeignKey("dbo.order_details", "ProductID", "dbo.products");
+            DropForeignKey("dbo.products", "CategoryID", "dbo.product_categories");
+            DropForeignKey("dbo.order_details", "OrderID", "dbo.orders");
+            DropForeignKey("dbo.menus", "GroupID", "dbo.menu_groups");
+            DropIndex("dbo.product_tags", new[] { "TagID" });
+            DropIndex("dbo.product_tags", new[] { "ProductID" });
+            DropIndex("dbo.post_tags", new[] { "TagID" });
+            DropIndex("dbo.post_tags", new[] { "PostID" });
+            DropIndex("dbo.posts", new[] { "CategoryID" });
+            DropIndex("dbo.products", new[] { "CategoryID" });
+            DropIndex("dbo.order_details", new[] { "OrderID" });
+            DropIndex("dbo.order_details", new[] { "ProductID" });
+            DropIndex("dbo.menus", new[] { "GroupID" });
             DropTable("dbo.visistor_statistics");
-            DropTable("dbo.tags");
             DropTable("dbo.system_configs");
             DropTable("dbo.support_onlines");
             DropTable("dbo.slides");
             DropTable("dbo.product_tags");
-            DropTable("dbo.products");
-            DropTable("dbo.product_categories");
+            DropTable("dbo.tags");
             DropTable("dbo.post_tags");
             DropTable("dbo.posts");
             DropTable("dbo.post_categories");
             DropTable("dbo.pages");
+            DropTable("dbo.product_categories");
+            DropTable("dbo.products");
             DropTable("dbo.orders");
             DropTable("dbo.order_details");
             DropTable("dbo.menus");

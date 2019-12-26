@@ -1,6 +1,9 @@
-﻿namespace Data.Repositories.Interface
+﻿using Data.Infrastructure;
+using Model.Models;
+
+namespace Data.Repositories.Interface
 {
-    public interface ITagRepository
+    public interface ITagRepository : IRepository<Tag>
     {
     }
 }

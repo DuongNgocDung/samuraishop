@@ -25,6 +25,9 @@ namespace Data.Infrastructure
             private set;
         }
 
+        /// <summary>
+        /// just get no set
+        /// </summary>
         protected SamuraiShopDbContext DbContext
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }

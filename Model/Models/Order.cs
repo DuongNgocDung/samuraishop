@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -44,5 +45,7 @@ namespace Model.Models
 
         [MaxLength(50)]
         public string CreateBy { get; set; }
+
+        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
     }
 }

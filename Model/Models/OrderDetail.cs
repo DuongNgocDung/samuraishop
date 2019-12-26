@@ -15,5 +15,11 @@ namespace Model.Models
         public int OrderID { get; set; }
 
         public int Quantity { get; set; }
+
+        [ForeignKey("OrderID")]
+        public virtual Order Order { get; set; }
+
+        [ForeignKey("ProductID")]
+        public virtual Product Product { get; set; }
     }
 }

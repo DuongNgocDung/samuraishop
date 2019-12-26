@@ -14,5 +14,12 @@ namespace Model.Models
         [MaxLength(50)]
         [Column(Order = 2, TypeName = "varchar")]
         public string TagID { get; set; }
+
+
+        [ForeignKey("ProductID")]
+        public virtual Product Product { get; set; }
+
+        [ForeignKey("TagID")]
+        public virtual Tag Tag { get; set; }
     }
 }

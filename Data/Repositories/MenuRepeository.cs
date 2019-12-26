@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class MenuRepeository : RepositoryBase<Menu>, IMenuRepeository
+    public class MenuRepeository : RepositoryBase<Menu>, IMenuRepository
     {
         public MenuRepeository(IDbFactory dbFactory) : base(dbFactory)
         {

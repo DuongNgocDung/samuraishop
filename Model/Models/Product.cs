@@ -1,5 +1,6 @@
 ﻿using Model.Abstract;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -45,5 +46,10 @@ namespace Model.Models
         public bool? HotFlag { get; set; }
 
         public int? ViewCount { get; set; }
+
+        [ForeignKey("CategoryID")]
+        public virtual ProductCategory ProductCategory { get; set; }
+
+        public virtual IEnumerable<ProductTag> ProductTags { get; set; }
     }
 }

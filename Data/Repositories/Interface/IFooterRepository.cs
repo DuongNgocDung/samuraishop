@@ -1,6 +1,9 @@
-﻿namespace Data.Repositories.Interface
+﻿using Data.Infrastructure;
+using Model.Models;
+
+namespace Data.Repositories.Interface
 {
-    public interface IFooterRepository
+    public interface IFooterRepository : IRepository<Footer>
     {
     }
 }
