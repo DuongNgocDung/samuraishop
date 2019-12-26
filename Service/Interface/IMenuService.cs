@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface IMenuService
     {
-        void Add(Menu dto);
+        Menu Add(Menu dto);
 
         void Update(Menu dto);
 
-        void Delete(Menu dto);
+        Menu Delete(Menu dto);
 
         IEnumerable<Menu> GetAllPaging(int page, int pageSize, out int totalRow);
 

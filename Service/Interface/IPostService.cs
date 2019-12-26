@@ -9,11 +9,11 @@ namespace Service.Interface
 {
     public interface IPostService
     {
-        void Add(Post dto);
+        Post Add(Post dto);
 
         void Update(Post dto);
 
-        void Delete(Post dto);
+        Post Delete(Post dto);
 
         IEnumerable<Post> GetAll();
 

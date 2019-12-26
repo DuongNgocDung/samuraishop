@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(Tag dto)
+        public Tag Add(Tag dto)
         {
-            _tagRepository.Add(dto);
+            return _tagRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(Tag dto)
+        public Tag Delete(Tag dto)
         {
-            _tagRepository.Delete(dto);
+            return _tagRepository.Delete(dto);
         }
 
         /// <summary>

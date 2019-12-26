@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface IProductCategoryService
     {
-        void Add(ProductCategory dto);
+        ProductCategory Add(ProductCategory dto);
 
         void Update(ProductCategory dto);
 
-        void Delete(ProductCategory dto);
+        ProductCategory Delete(ProductCategory dto);
 
         IEnumerable<ProductCategory> GetAll();
 

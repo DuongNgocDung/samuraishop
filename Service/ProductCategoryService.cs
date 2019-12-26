@@ -25,9 +25,9 @@ namespace Service
         /// add
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(ProductCategory dto)
+        public ProductCategory Add(ProductCategory dto)
         {
-            _productCategoryRepository.Add(dto);
+            return _productCategoryRepository.Add(dto);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace Service
         /// delete
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(ProductCategory dto)
+        public ProductCategory Delete(ProductCategory dto)
         {
-            _productCategoryRepository.Delete(dto);
+            return _productCategoryRepository.Delete(dto);
         }
 
         /// <summary>

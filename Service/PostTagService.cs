@@ -8,7 +8,7 @@ namespace Service
 {
     public class PostTagService : IPostTagService
     {
-        private IPostTagRepository  _postTagRepository;
+        private IPostTagRepository _postTagRepository;
         private IUnitOfWork _unitOfWork;
 
         public PostTagService(IPostTagRepository postTagRepository, IUnitOfWork unitOfWork)
@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(PostTag dto)
+        public PostTag Add(PostTag dto)
         {
-            _postTagRepository.Add(dto);
+            return _postTagRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(PostTag dto)
+        public PostTag Delete(PostTag dto)
         {
-            _postTagRepository.Delete(dto);
+            return _postTagRepository.Delete(dto);
         }
 
         /// <summary>

@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(Slide dto)
+        public Slide Add(Slide dto)
         {
-            _slideRepository.Add(dto);
+            return _slideRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(Slide dto)
+        public Slide Delete(Slide dto)
         {
-            _slideRepository.Delete(dto);
+            return _slideRepository.Delete(dto);
         }
 
         /// <summary>

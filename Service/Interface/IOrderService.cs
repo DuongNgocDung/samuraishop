@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface IOrderService
     {
-        void Add(Order dto);
+        Order Add(Order dto);
 
         void Update(Order dto);
 
-        void Delete(Order dto);
+        Order Delete(Order dto);
 
         IEnumerable<Order> GetAllPaging(int page, int pageSize, out int totalRow);
 

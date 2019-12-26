@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(VisistorStatistic dto)
+        public VisistorStatistic Add(VisistorStatistic dto)
         {
-            _visistorStatisticRepository.Add(dto);
+            return _visistorStatisticRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(VisistorStatistic dto)
+        public VisistorStatistic Delete(VisistorStatistic dto)
         {
-            _visistorStatisticRepository.Delete(dto);
+            return _visistorStatisticRepository.Delete(dto);
         }
 
         /// <summary>

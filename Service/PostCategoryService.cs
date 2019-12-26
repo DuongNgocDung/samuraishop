@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(PostCategory dto)
+        public PostCategory Add(PostCategory dto)
         {
-            _postCategoryRepository.Add(dto);
+            return _postCategoryRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(PostCategory dto)
+        public PostCategory Delete(PostCategory dto)
         {
-            _postCategoryRepository.Delete(dto);
+            return _postCategoryRepository.Delete(dto);
         }
 
         /// <summary>

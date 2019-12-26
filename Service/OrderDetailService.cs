@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(OrderDetail dto)
+        public OrderDetail Add(OrderDetail dto)
         {
-            _orderDetailRepository.Add(dto);
+            return _orderDetailRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(OrderDetail dto)
+        public OrderDetail Delete(OrderDetail dto)
         {
-            _orderDetailRepository.Delete(dto);
+            return _orderDetailRepository.Delete(dto);
         }
 
         /// <summary>

@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface ISlideService
     {
-        void Add(Slide dto);
+        Slide Add(Slide dto);
 
         void Update(Slide dto);
 
-        void Delete(Slide dto);
+        Slide Delete(Slide dto);
 
         Slide GetByKey(int id);
 

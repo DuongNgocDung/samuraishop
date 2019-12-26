@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory dto);
+        PostCategory Add(PostCategory dto);
 
         void Update(PostCategory dto);
 
-        void Delete(PostCategory dto);
+        PostCategory Delete(PostCategory dto);
 
         IEnumerable<PostCategory> GetAll();
 

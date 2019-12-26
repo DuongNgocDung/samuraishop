@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface ISystemConfigService
     {
-        void Add(SystemConfig dto);
+        SystemConfig Add(SystemConfig dto);
 
         void Update(SystemConfig dto);
 
-        void Delete(SystemConfig dto);
+        SystemConfig Delete(SystemConfig dto);
 
         IEnumerable<SystemConfig> GetAllPaging(int page, int pageSize, out int totalRow);
 

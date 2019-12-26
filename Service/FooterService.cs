@@ -26,18 +26,18 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(Footer dto)
+        public Footer Add(Footer dto)
         {
-            _footerRepository.Add(dto);
+            return _footerRepository.Add(dto);
         }
 
         /// <summary>
         /// delete
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(Footer dto)
+        public Footer Delete(Footer dto)
         {
-            _footerRepository.Delete(dto);
+            return _footerRepository.Delete(dto);
         }
 
         /// <summary>

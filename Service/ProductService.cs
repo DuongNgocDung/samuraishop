@@ -26,18 +26,18 @@ namespace Service
         /// add
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(Product dto)
+        public Product Add(Product dto)
         {
-            _productRepository.Add(dto);
+            return _productRepository.Add(dto);
         }
 
         /// <summary>
         /// delete
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(Product dto)
+        public Product Delete(Product dto)
         {
-            _productRepository.Delete(dto);
+            return _productRepository.Delete(dto);
         }
 
         /// <summary>

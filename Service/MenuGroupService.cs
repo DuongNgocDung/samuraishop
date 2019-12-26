@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(MenuGroup dto)
+        public MenuGroup Add(MenuGroup dto)
         {
-            _menuGroupRepository.Add(dto);
+            return _menuGroupRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(MenuGroup dto)
+        public MenuGroup Delete(MenuGroup dto)
         {
-            _menuGroupRepository.Delete(dto);
+            return _menuGroupRepository.Delete(dto);
         }
 
         /// <summary>

@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface IFooterService
     {
-        void Add(Footer dto);
+        Footer Add(Footer dto);
 
         void Update(Footer dto);
 
-        void Delete(Footer dto);
+        Footer Delete(Footer dto);
 
         IEnumerable<Footer> GetAll();
 

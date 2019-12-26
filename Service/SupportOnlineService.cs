@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(SupportOnline dto)
+        public SupportOnline Add(SupportOnline dto)
         {
-            _supportOnlineRepository.Add(dto);
+            return _supportOnlineRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(SupportOnline dto)
+        public SupportOnline Delete(SupportOnline dto)
         {
-            _supportOnlineRepository.Delete(dto);
+            return _supportOnlineRepository.Delete(dto);
         }
 
         /// <summary>

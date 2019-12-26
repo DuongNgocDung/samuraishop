@@ -5,11 +5,11 @@ namespace Service.Interface
 {
     public interface IVisistorStatisticService
     {
-        void Add(VisistorStatistic dto);
+        VisistorStatistic Add(VisistorStatistic dto);
 
         void Update(VisistorStatistic dto);
 
-        void Delete(VisistorStatistic dto);
+        VisistorStatistic Delete(VisistorStatistic dto);
 
         IEnumerable<VisistorStatistic> GetAllPaging(int page, int pageSize, out int totalRow);
 

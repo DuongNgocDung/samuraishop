@@ -20,9 +20,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(Page dto)
+        public Page Add(Page dto)
         {
-            _pageRepository.Add(dto);
+            return _pageRepository.Add(dto);
         }
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace Service
         /// delete
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(Page dto)
+        public Page Delete(Page dto)
         {
-            _pageRepository.Delete(dto);
+            return _pageRepository.Delete(dto);
         }
 
         /// <summary>

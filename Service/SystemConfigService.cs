@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(SystemConfig dto)
+        public SystemConfig Add(SystemConfig dto)
         {
-            _systemConfigRepository.Add(dto);
+            return _systemConfigRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(SystemConfig dto)
+        public SystemConfig Delete(SystemConfig dto)
         {
-            _systemConfigRepository.Delete(dto);
+            return _systemConfigRepository.Delete(dto);
         }
 
         /// <summary>

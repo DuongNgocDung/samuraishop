@@ -47,9 +47,9 @@ namespace Data.Infrastructure
 
         #region Implementation
 
-        public virtual void Add(T entity)
+        public virtual T Add(T entity)
         {
-            dbSet.Add(entity);
+            return dbSet.Add(entity);
         }
 
         public virtual void Update(T entity)
@@ -58,16 +58,24 @@ namespace Data.Infrastructure
             dataContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual void Delete(T entity)
+        public virtual T Delete(T entity)
         {
-            dbSet.Remove(entity);
+            return dbSet.Remove(entity);
         }
 
-        public virtual void DeleteMulti(Expression<Func<T, bool>> where)
+        public virtual int DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
+            int count = 0;
             foreach (T obj in objects)
-                dbSet.Remove(obj);
+            {
+                T rs = dbSet.Remove(obj);
+                if (rs != null)
+                    count++;
+            }
+            if (count != objects.Count())
+                return -1;
+            return 1;
         }
 
         public virtual T GetSingleById(int id)
@@ -79,63 +87,71 @@ namespace Data.Infrastructure
         {
             return dbSet.Where(where).ToList();
         }
-
+        
         public virtual int Count(Expression<Func<T, bool>> where)
         {
             return dbSet.Count(where);
         }
 
-        public IQueryable<T> GetAll(string[] includes = null)
+        public IEnumerable<T> GetAll(string[] includes = null)
         {
             if (includes != null && includes.Count() > 0)
             {
                 var query = dataContext.Set<T>().Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
-                return query.AsQueryable();
+                return query;
             }
 
-            return dataContext.Set<T>().AsQueryable();
+            return dataContext.Set<T>();
         }
 
         public T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
         {
-            return GetAll(includes).FirstOrDefault(expression);
-        }
-
-        public virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes)
-        {
             if (includes != null && includes.Count() > 0)
             {
                 var query = dataContext.Set<T>().Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
-                return query.Where<T>(predicate).AsQueryable<T>();
+                return query.FirstOrDefault(expression);
             }
 
-            return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
+            return dataContext.Set<T>().FirstOrDefault(expression);
         }
 
-        public virtual IQueryable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 50, string[] includes = null)
+        public virtual IEnumerable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes)
+        {
+            if (includes != null && includes.Count() > 0)
+            {
+                var query = dataContext.Set<T>().Include(includes.First());
+                foreach (var include in includes.Skip(1))
+                    query = query.Include(include);
+                return query.Where<T>(predicate);
+            }
+
+            return dataContext.Set<T>().Where<T>(predicate);
+        }
+
+        public virtual IEnumerable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 50, string[] includes = null)
         {
             int skipCount = index * size;
-            IQueryable<T> _resetSet;
+            IEnumerable<T> _resetSet;
 
             if (includes != null && includes.Count() > 0)
             {
                 var query = dataContext.Set<T>().Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
-                _resetSet = predicate != null ? query.Where<T>(predicate).AsQueryable() : query.AsQueryable();
+                _resetSet = predicate != null ? query.Where<T>(predicate) : query;
             }
             else
             {
-                _resetSet = predicate != null ? dataContext.Set<T>().Where<T>(predicate).AsQueryable() : dataContext.Set<T>().AsQueryable();
+                _resetSet = predicate != null ? dataContext.Set<T>().Where<T>(predicate) : dataContext.Set<T>();
             }
 
             _resetSet = skipCount == 0 ? _resetSet.Take(size) : _resetSet.Skip(skipCount).Take(size);
             total = _resetSet.Count();
-            return _resetSet.AsQueryable();
+            return _resetSet;
         }
 
         public bool CheckContains(Expression<Func<T, bool>> predicate)

@@ -21,9 +21,9 @@ namespace Service
         /// add new
         /// </summary>
         /// <param name="dto"></param>
-        public void Add(ProductTag dto)
+        public ProductTag Add(ProductTag dto)
         {
-            _productTagRepository.Add(dto);
+            return _productTagRepository.Add(dto);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Service
         /// delete data
         /// </summary>
         /// <param name="dto"></param>
-        public void Delete(ProductTag dto)
+        public ProductTag Delete(ProductTag dto)
         {
-            _productTagRepository.Delete(dto);
+            return _productTagRepository.Delete(dto);
         }
 
         /// <summary>
