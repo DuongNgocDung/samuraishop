@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorService.cs" />
     <Compile Include="FooterService.cs" />
+    <Compile Include="Interface\IErrorService.cs" />
     <Compile Include="Interface\IFooterService.cs" />
     <Compile Include="Interface\IMenuGroupService.cs" />
     <Compile Include="Interface\IMenuService.cs" />
