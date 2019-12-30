@@ -21,6 +21,17 @@ namespace Web.Api
             this._postCategoryService = postCategoryService;
         }
 
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var listCategory = _postCategoryService.GetAll();
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                return response;
+            });
+        }
+
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
         {
             return CreateHttpResponse(request, ()=>
@@ -76,26 +87,6 @@ namespace Web.Api
                     _postCategoryService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.Moved, category);
-                }
-                return response;
-            });
-        }
-
-        [Route("getall")]
-        public HttpResponseMessage GetAll(HttpRequestMessage request)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
-
-                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
                 }
                 return response;
             });
