@@ -50,7 +50,8 @@ namespace Service
         /// <returns></returns>
         public IEnumerable<PostCategory> GetAll()
         {
-            return _postCategoryRepository.GetAll();
+            var rs = _postCategoryRepository.GetAll();
+            return rs;
         }
 
         /// <summary>

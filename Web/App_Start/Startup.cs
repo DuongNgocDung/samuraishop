@@ -24,6 +24,10 @@ namespace Web.App_Start
             ConfigAutofac(app);
         }
 
+        /// <summary>
+        /// Auto initialize for... các kiểu
+        /// </summary>
+        /// <param name="app"></param>
         private void ConfigAutofac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
