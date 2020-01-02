@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class SamuraiShopDbContext : DbContext
+    public class SamuraiShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public SamuraiShopDbContext() : base("SamuraiShopConnection")
         {
@@ -42,7 +43,13 @@ namespace Data
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+        }
+
+        public static SamuraiShopDbContext Create()
+        {
+            return new SamuraiShopDbContext();
         }
     }
 }
