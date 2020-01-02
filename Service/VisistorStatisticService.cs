@@ -63,7 +63,7 @@ namespace Service
         /// <returns></returns>
         public VisistorStatistic GetByKey(int id)
         {
-            return _visistorStatisticRepository.GetSingleById(id);
+            return _visistorStatisticRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

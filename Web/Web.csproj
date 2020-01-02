@@ -179,7 +179,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\FooterController.cs" />
+    <Compile Include="Api\MenuController.cs" />
+    <Compile Include="Api\MenuGroupController.cs" />
+    <Compile Include="Api\OrderController.cs" />
+    <Compile Include="Api\OrderDetailController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\PostController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -195,10 +201,23 @@
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
     <Compile Include="Infrastructure\Extensions\EnityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\FooterViewModel.cs" />
+    <Compile Include="Models\MenuGroupViewModel.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
+    <Compile Include="Models\OrderDetailViewModel.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModel.cs" />
+    <Compile Include="Models\ProductTagViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\SlideViewModel.cs" />
+    <Compile Include="Models\SupportOnlineViewModel.cs" />
+    <Compile Include="Models\SystemConfigViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
+    <Compile Include="Models\VisistorStatisticViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +238,7 @@
     <Folder Include="Scripts\plugins\" />
     <Folder Include="Scripts\spa\" />
     <Folder Include="Views\ApiControllerBase\" />
+    <Folder Include="Views\Default\" />
     <Folder Include="Views\PostCategory\" />
   </ItemGroup>
   <ItemGroup>

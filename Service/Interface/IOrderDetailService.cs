@@ -13,7 +13,7 @@ namespace Service.Interface
 
         IEnumerable<OrderDetail> GetAllPaging(int page, int pageSize, out int totalRow);
 
-        OrderDetail GetByKey(int id);
+        OrderDetail GetByKey(int productID, int orderID);
 
         void SaveChanges();
     }

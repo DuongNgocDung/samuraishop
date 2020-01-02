@@ -99,5 +99,34 @@ namespace UnitTest.ServiceTest
 
             Assert.IsNull(result);
         }
+
+        //[TestMethod]
+        //public void PostCategory_Service_Update()
+        //{
+        //    PostCategory objAdd = new PostCategory()
+        //    {
+        //        Name = "Tạo mới",
+        //        Alias = "Add",
+        //        Status = true
+        //    };
+        //    PostCategory objUpdate = new PostCategory()
+        //    {
+        //        ID = 20,
+        //        Name = "Cập nhật",
+        //        Alias = "Update",
+        //        Status = true
+        //    };
+
+        //    _mockRepository.Setup(m => m.Add(objAdd)).Returns((PostCategory p) =>
+        //    {
+        //        p.ID = 20;
+        //        return p;
+        //    });
+        //    _mockRepository.Setup(m => m.Update(objUpdate));
+
+        //    _objService.Update(objAdd);
+        //    var rsAfterUpdate = _objService.GetByKey(20);
+        //    Assert.AreEqual(objUpdate.Name, rsAfterUpdate.Name);
+        //}
     }
 }

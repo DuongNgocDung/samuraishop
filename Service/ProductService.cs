@@ -103,7 +103,7 @@ namespace Service
         /// <returns></returns>
         public Product GetByKey(int id)
         {
-            return _productRepository.GetSingleById(id);
+            return _productRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

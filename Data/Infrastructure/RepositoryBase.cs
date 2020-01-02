@@ -78,9 +78,9 @@ namespace Data.Infrastructure
             return 1;
         }
 
-        public virtual T GetSingleById(int id)
+        public virtual T GetSingleById(object[] keyValues)
         {
-            return dbSet.Find(id);
+            return dbSet.Find(keyValues);
         }
 
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where, string includes)

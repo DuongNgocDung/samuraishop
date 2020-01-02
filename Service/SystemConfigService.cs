@@ -63,7 +63,7 @@ namespace Service
         /// <returns></returns>
         public SystemConfig GetByKey(int id)
         {
-            return _systemConfigRepository.GetSingleById(id);
+            return _systemConfigRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

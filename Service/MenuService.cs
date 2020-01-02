@@ -63,7 +63,7 @@ namespace Service
         /// <returns></returns>
         public Menu GetByKey(int id)
         {
-            return _menuRepository.GetSingleById(id);
+            return _menuRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

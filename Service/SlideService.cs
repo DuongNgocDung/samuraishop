@@ -51,7 +51,7 @@ namespace Service
         /// <returns></returns>
         public Slide GetByKey(int id)
         {
-            return _slideRepository.GetSingleById(id);
+            return _slideRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

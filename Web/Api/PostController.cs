@@ -11,14 +11,13 @@ using Web.Models;
 
 namespace Web.Api
 {
-    [RoutePrefix("api/postcategory")]
-    public class PostCategoryController : ApiControllerBase
+    public class PostController : ApiControllerBase
     {
-        private IPostCategoryService _postCategoryService;
+        private IPostService _postService;
 
-        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) : base(errorService)
+        public PostController(IErrorService errorService, IPostService postService) : base(errorService)
         {
-            this._postCategoryService = postCategoryService;
+            this._postService = postService;
         }
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace Web.Api
         /// <returns></returns>
         [HttpPost]
         [Route("add")]
-        public HttpResponseMessage Add(HttpRequestMessage request, PostCategoryViewModel vModel)
+        public HttpResponseMessage Add(HttpRequestMessage request, PostViewModel vModel)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -40,11 +39,11 @@ namespace Web.Api
                 }
                 else
                 {
-                    PostCategory dModel = new PostCategory();
-                    dModel.UpdatePostCategory(vModel);
+                    Post dModel = new Post();
+                    dModel.UpdatePost(vModel);
 
-                    var category = _postCategoryService.Add(dModel);
-                    _postCategoryService.SaveChanges();
+                    var post = _postService.Add(dModel);
+                    _postService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.Created, vModel);
                 }
@@ -60,7 +59,7 @@ namespace Web.Api
         /// <returns></returns>
         [HttpPost]
         [Route("update")]
-        public HttpResponseMessage Update(HttpRequestMessage request, PostCategoryViewModel vModel)
+        public HttpResponseMessage Update(HttpRequestMessage request, PostViewModel vModel)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -71,11 +70,11 @@ namespace Web.Api
                 }
                 else
                 {
-                    PostCategory dModel = _postCategoryService.GetByKey(vModel.ID);
-                    dModel.UpdatePostCategory(vModel);
+                    Post dModel = _postService.GetByKey(vModel.ID);
+                    dModel.UpdatePost(vModel);
 
-                    _postCategoryService.Update(dModel);
-                    _postCategoryService.SaveChanges();
+                    _postService.Update(dModel);
+                    _postService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
@@ -91,7 +90,7 @@ namespace Web.Api
         /// <returns></returns>
         [HttpPost]
         [Route("delete")]
-        public HttpResponseMessage Delete(HttpRequestMessage request, PostCategoryViewModel vModel)
+        public HttpResponseMessage Delete(HttpRequestMessage request, PostViewModel vModel)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -102,11 +101,11 @@ namespace Web.Api
                 }
                 else
                 {
-                    PostCategory dModel = _postCategoryService.GetByKey(vModel.ID);
-                    var result = _postCategoryService.Delete(dModel);
-                    _postCategoryService.SaveChanges();
+                    Post dModel = _postService.GetByKey(vModel.ID);
+                    var result = _postService.Delete(dModel);
+                    _postService.SaveChanges();
 
-                    vModel = Mapper.Map<PostCategoryViewModel>(result);
+                    vModel = Mapper.Map<PostViewModel>(result);
                     response = request.CreateResponse(HttpStatusCode.Moved, vModel);
                 }
                 return response;
@@ -124,8 +123,8 @@ namespace Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                var listDataModel = _postCategoryService.GetAll();
-                var listViewModel = Mapper.Map<List<PostCategoryViewModel>>(listDataModel);
+                var listDataModel = _postService.GetAll();
+                var listViewModel = Mapper.Map<List<PostViewModel>>(listDataModel);
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listViewModel);
                 return response;
             });
@@ -143,14 +142,14 @@ namespace Web.Api
         [Route("get-all-paging")]
         public HttpResponseMessage GetAllPaging(HttpRequestMessage request, int page, int pageSize, out int totalRow)
         {
-            var listDataModel = _postCategoryService.GetAllPaging(page, pageSize, out totalRow);
-            var listViewModel = Mapper.Map<List<PostCategoryViewModel>>(listDataModel);
+            var listDataModel = _postService.GetAllPaging(page, pageSize, out totalRow);
+            var listViewModel = Mapper.Map<List<PostViewModel>>(listDataModel);
             HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listViewModel);
             return CreateHttpResponse(request, () => { return response; });
         }
 
         /// <summary>
-        /// get all where status is true and by parent id paging
+        /// get all where status is true and by category id paging
         /// </summary>
         /// <param name="request"></param>
         /// <param name="page"></param>
@@ -158,11 +157,29 @@ namespace Web.Api
         /// <param name="totalRow"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("get-paging-by-parent-id")]
-        public HttpResponseMessage GetPagingByParentID(HttpRequestMessage request, int parentID, int page, int pageSize, out int totalRow)
+        [Route("get-paging-by-tag")]
+        public HttpResponseMessage GetAllPagingByTag(HttpRequestMessage request, string tag, int page, int pageSize, out int totalRow)
         {
-            var listDataModel = _postCategoryService.GetPagingByParentID(parentID, page, pageSize, out totalRow);
-            var listViewModel = Mapper.Map<List<PostCategoryViewModel>>(listDataModel);
+            var listDataModel = _postService.GetAllPagingByTag(tag, page, pageSize, out totalRow);
+            var listViewModel = Mapper.Map<List<PostViewModel>>(listDataModel);
+            HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listViewModel);
+            return CreateHttpResponse(request, () => { return response; });
+        }
+
+        /// <summary>
+        /// get all where status is true and by category id paging
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="totalRow"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("get-paging-by-category-id")]
+        public HttpResponseMessage GetPagingByCategoryID(HttpRequestMessage request, int categoryID, int page, int pageSize, out int totalRow)
+        {
+            var listDataModel = _postService.GetPagingByCategoryID(categoryID, page, pageSize, out totalRow);
+            var listViewModel = Mapper.Map<List<PostViewModel>>(listDataModel);
             HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listViewModel);
             return CreateHttpResponse(request, () => { return response; });
         }
@@ -179,8 +196,8 @@ namespace Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                PostCategory dModel = _postCategoryService.GetByKey(ID);
-                var vModel = Mapper.Map<PostCategoryViewModel>(dModel);
+                Post dModel = _postService.GetByKey(ID);
+                var vModel = Mapper.Map<PostViewModel>(dModel);
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, vModel);
                 return response;
             });

@@ -25,7 +25,7 @@ namespace Model.Models
         [MaxLength(250)]
         public string URL { get; set; }
 
-        public int? DisplayPrder { get; set; }
+        public int? DisplayOrder { get; set; }
 
         [Required]
         public bool Status { get; set; }

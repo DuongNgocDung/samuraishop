@@ -57,6 +57,16 @@ namespace Service
         }
 
         /// <summary>
+        /// get by key
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Tag GetByKey(string id)
+        {
+            return _tagRepository.GetSingleById(new object[] { id });
+        }
+
+        /// <summary>
         /// commit changes
         /// </summary>
         public void SaveChanges()

@@ -63,7 +63,7 @@ namespace Service
         /// <returns></returns>
         public SupportOnline GetByKey(int id)
         {
-            return _supportOnlineRepository.GetSingleById(id);
+            return _supportOnlineRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

@@ -86,7 +86,7 @@ namespace Service
         /// <returns></returns>
         public PostCategory GetByKey(int id)
         {
-            return _postCategoryRepository.GetSingleById(id);
+            return _postCategoryRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

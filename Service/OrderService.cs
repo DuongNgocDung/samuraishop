@@ -63,7 +63,7 @@ namespace Service
         /// <returns></returns>
         public Order GetByKey(int id)
         {
-            return _orderRepository.GetSingleById(id);
+            return _orderRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

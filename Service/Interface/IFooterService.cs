@@ -15,7 +15,7 @@ namespace Service.Interface
 
         IEnumerable<Footer> GetAllPaging(int page, int pageSize, out int totalRow);
 
-        Footer GetByKey(int id);
+        Footer GetByKey(string id);
 
         void SaveChanges();
     }

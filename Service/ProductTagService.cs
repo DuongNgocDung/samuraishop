@@ -57,13 +57,14 @@ namespace Service
         }
 
         /// <summary>
-        /// get by id
+        /// get by key
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="productID"></param>
+        /// <param name="tagID"></param>
         /// <returns></returns>
-        public ProductTag GetByKey(int id)
+        public ProductTag GetByKey(int productID, string tagID)
         {
-            return _productTagRepository.GetSingleById(id);
+            return _productTagRepository.GetSingleById(new object[] { productID, tagID });
         }
 
         /// <summary>

@@ -61,9 +61,9 @@ namespace Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public OrderDetail GetByKey(int id)
+        public OrderDetail GetByKey(int productID, int orderID)
         {
-            return _orderDetailRepository.GetSingleById(id);
+            return _orderDetailRepository.GetSingleById(new object[] { productID, orderID });
         }
 
         /// <summary>

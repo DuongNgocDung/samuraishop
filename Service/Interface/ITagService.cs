@@ -14,6 +14,8 @@ namespace Service.Interface
 
         IEnumerable<Tag> GetAllPaging(int page, int pageSize, out int totalRow);
 
+        Tag GetByKey(string id);
+
         void SaveChanges();
     }
 }

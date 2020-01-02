@@ -89,7 +89,7 @@ namespace Service
         /// <returns></returns>
         public ProductCategory GetByKey(int id)
         {
-            return _productCategoryRepository.GetSingleById(id);
+            return _productCategoryRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

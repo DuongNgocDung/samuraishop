@@ -98,7 +98,7 @@ namespace Service
         /// <returns></returns>
         public Post GetByKey(int id)
         {
-            return _postRepository.GetSingleById(id);
+            return _postRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

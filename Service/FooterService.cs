@@ -76,9 +76,9 @@ namespace Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Footer GetByKey(int id)
+        public Footer GetByKey(string id)
         {
-            return _footerRepository.GetSingleById(id);
+            return _footerRepository.GetSingleById(new object[] { id });
         }
 
         /// <summary>

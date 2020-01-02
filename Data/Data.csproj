@@ -80,6 +80,10 @@
     <Compile Include="Migrations\202001020721523_ChangeKey.designer.cs">
       <DependentUpon>202001020721523_ChangeKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001021000170_update-columnName.cs" />
+    <Compile Include="Migrations\202001021000170_update-columnName.designer.cs">
+      <DependentUpon>202001021000170_update-columnName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001020721523_ChangeKey.resx">
       <DependentUpon>202001020721523_ChangeKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001021000170_update-columnName.resx">
+      <DependentUpon>202001021000170_update-columnName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

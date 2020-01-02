@@ -8,29 +8,23 @@ namespace Web.Mappings
     {
         public static void Configure()
         {
-            //var configPost = new MapperConfiguration(cfg => {
-            //    cfg.CreateMap<Post, PostViewModel>();
-            //});
-            //configPost.CreateMapper();
-
-            //var configPostCategory = new MapperConfiguration(cfg => {
-            //    cfg.CreateMap<PostCategory, PostCategoryViewModel>();
-            //});
-            //configPost.CreateMapper();
-
-            //var configTag = new MapperConfiguration(cfg => {
-            //    cfg.CreateMap<Tag, TagViewModel>();
-            //});
-            //configPost.CreateMapper();
-
-            //var configPostTag = new MapperConfiguration(cfg => {
-            //    cfg.CreateMap<PostTag, PostTagViewModel>();
-            //});
-            //configPost.CreateMapper();
+            Mapper.CreateMap<Footer, FooterViewModel>();
+            Mapper.CreateMap<Menu, MenuViewModel>();
+            Mapper.CreateMap<MenuGroup, MenuGroupViewModel>();
+            Mapper.CreateMap<Order, OrderViewModel>();
+            Mapper.CreateMap<OrderDetail, OrderDetailViewModel>();
+            Mapper.CreateMap<Page, PageViewModel>();
             Mapper.CreateMap<Post, PostViewModel>();
             Mapper.CreateMap<PostCategory, PostCategoryViewModel>();
-            Mapper.CreateMap<Tag, TagViewModel>();
             Mapper.CreateMap<PostTag, PostTagViewModel>();
+            Mapper.CreateMap<Product, ProductViewModel>();
+            Mapper.CreateMap<ProductCategory, ProductCategoryViewModel>();
+            Mapper.CreateMap<ProductTag, ProductTagViewModel>();
+            Mapper.CreateMap<Slide, SlideViewModel>();
+            Mapper.CreateMap<SupportOnline, SupportOnlineViewModel>();
+            Mapper.CreateMap<SystemConfig, SystemConfigViewModel>();
+            Mapper.CreateMap<Tag, TagViewModel>();
+            Mapper.CreateMap<VisistorStatistic, VisistorStatisticViewModel>();
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Service.Interface
 
         IEnumerable<ProductTag> GetAllPaging(int page, int pageSize, out int totalRow);
 
+        ProductTag GetByKey(int productID, string tagID);
+
         void SaveChanges();
     }
 }

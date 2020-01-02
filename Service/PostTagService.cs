@@ -57,13 +57,14 @@ namespace Service
         }
 
         /// <summary>
-        /// get by id
+        /// get by key
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="postID"></param>
+        /// <param name="tagID"></param>
         /// <returns></returns>
-        public PostTag GetByKey(int id)
+        public PostTag GetByKey(int postID, string tagID)
         {
-            return _postTagRepository.GetSingleById(id);
+            return _postTagRepository.GetSingleById(new object[] { postID, tagID });
         }
 
         /// <summary>

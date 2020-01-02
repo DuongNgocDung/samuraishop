@@ -22,13 +22,13 @@ namespace Model.Models
 
         [Required]
         public int GroupID { get; set; }
-        
-        [ForeignKey("GroupID")]
-        public virtual MenuGroup MenuGroup { get; set; }
 
         [MaxLength(10)]
         public string Target { get; set; }
 
         public bool Status { get; set; }
+
+        [ForeignKey("GroupID")]
+        public virtual MenuGroup MenuGroup { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace Service.Interface
 
         IEnumerable<PostTag> GetAllPaging(int page, int pageSize, out int totalRow);
 
+        PostTag GetByKey(int postID, string tagID);
+
         void SaveChanges();
     }
 }
