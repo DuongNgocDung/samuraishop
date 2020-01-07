@@ -9,7 +9,7 @@ using Web.Infrastructure.Core;
 using Web.Infrastructure.Extensions;
 using Web.Models;
 
-namespace Web.Api
+namespace Web.api
 {
     [RoutePrefix("api/postcategory")]
     public class PostCategoryController : ApiControllerBase

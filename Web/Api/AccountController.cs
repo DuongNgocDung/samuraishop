@@ -8,7 +8,7 @@ using System.Web.Http;
 using Web.App_Start;
 using Web.Infrastructure.Core;
 
-namespace Web.Api
+namespace Web.api
 {
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
