@@ -232,6 +232,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
+    <Content Include="app\components\home\HtmlPage1.html" />
     <Content Include="app\components\orders\order.routes.js" />
     <Content Include="app\components\orders\orderAddController.js" />
     <Content Include="app\components\orders\orderAddView.html" />
