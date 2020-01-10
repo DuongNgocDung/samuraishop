@@ -1,15 +1,15 @@
 ﻿/// <reference path="../assets/admin/libs/angular/angular.js" />
 // khai báo 1 module mới
-// cái thằng module samuraishop này là chính và nó add hết tất cả các module con khác
+// cái thằng module samurai này là chính và nó add hết tất cả các module con khác
 
 (function () {
-    angular.module('samuraishop', ['samuraishop.common', 'products']).config(config);
+    angular.module('samurai', ['samurai.common', 'samurai.products', 'samurai.productcategories']).config(config);
 
     //tiêm 2 cái provider này vào đây
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     //và trong function này nó có thể tự nhận
-    //cấu hình routing cho cái samuraishop này, 
+    //cấu hình routing cho cái samurai này, 
     function config($stateProvider, $urlRouterProvider) {
         //đây là khai báo cho cái đường danẫ admin này nó sẽ dẫn tới cái homeView kia và sử dụng homeController
         $stateProvider.state('home', {

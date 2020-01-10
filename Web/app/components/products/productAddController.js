@@ -6,4 +6,4 @@
 
     }
 
-})(angular.module('products'));
+})(angular.module('samurai.products'));

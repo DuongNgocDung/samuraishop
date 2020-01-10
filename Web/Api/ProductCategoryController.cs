@@ -11,11 +11,13 @@ using Web.Models;
 
 namespace Web.api
 {
+    [RoutePrefix("api/product-category")]
     public class ProductCategoryController : ApiControllerBase
     {
         private IProductCategoryService _productCategoryService;
 
-        public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService) : base(errorService)
+        public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService) 
+            : base(errorService)
         {
             this._productCategoryService = productCategoryService;
         }

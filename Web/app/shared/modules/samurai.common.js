@@ -3,5 +3,5 @@
 //ai sử dụng cái commmon này đều có thể sử dụng cái ui.router
 ///MỤC TIÊU : Include những cái directive bên ngoài
 (function () {
-    angular.module('samuraishop.common', ['ui.router'])
+    angular.module('samurai.common', ['ui.router'])
 })();

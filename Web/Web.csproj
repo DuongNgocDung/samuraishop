@@ -232,7 +232,6 @@
     <Content Include="app\app.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
-    <Content Include="app\components\home\HtmlPage1.html" />
     <Content Include="app\components\orders\order.routes.js" />
     <Content Include="app\components\orders\orderAddController.js" />
     <Content Include="app\components\orders\orderAddView.html" />
@@ -240,7 +239,7 @@
     <Content Include="app\components\orders\orderEditView.html" />
     <Content Include="app\components\orders\orderListController.js" />
     <Content Include="app\components\orders\orderListView.html" />
-    <Content Include="app\components\product-categories\productCategory.routes.js" />
+    <Content Include="app\components\product-categories\productCategories.module.js" />
     <Content Include="app\components\product-categories\productCategoryAddController.js" />
     <Content Include="app\components\product-categories\productCategoryAddView.html" />
     <Content Include="app\components\product-categories\productCategoryEditController.js" />
@@ -254,7 +253,8 @@
     <Content Include="app\components\products\productEditView.html" />
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
-    <Content Include="app\shared\modules\samuraishop.common.js" />
+    <Content Include="app\shared\modules\samurai.common.js" />
+    <Content Include="app\shared\services\apiService.js" />
     <Content Include="assets\admin\css\adminlte.css" />
     <Content Include="assets\admin\css\adminlte.min.css" />
     <Content Include="assets\admin\css\alt\adminlte.components.css" />
@@ -301,9 +301,6 @@
     <Content Include="assets\admin\img\user6-128x128.jpg" />
     <Content Include="assets\admin\img\user7-128x128.jpg" />
     <Content Include="assets\admin\img\user8-128x128.jpg" />
-    <Content Include="Views\Shared\index.html" />
-    <Content Include="Views\Shared\index2.html" />
-    <Content Include="Views\Shared\index3.html" />
     <Content Include="assets\admin\js\adminlte.js" />
     <Content Include="assets\admin\js\adminlte.min.js" />
     <Content Include="assets\admin\js\demo.js" />
@@ -4383,16 +4380,6 @@
     <Content Include="assets\admin\libs\toastr\toastr.js" />
     <Content Include="assets\admin\libs\toastr\toastr.min.css" />
     <Content Include="assets\admin\libs\toastr\toastr.min.js" />
-    <Content Include="Views\Shared\pages\calendar.html" />
-    <Content Include="Views\Shared\pages\gallery.html" />
-    <Content Include="Views\Shared\pages\layout\boxed.html" />
-    <Content Include="Views\Shared\pages\layout\collapsed-sidebar.html" />
-    <Content Include="Views\Shared\pages\layout\fixed-footer.html" />
-    <Content Include="Views\Shared\pages\layout\fixed-sidebar.html" />
-    <Content Include="Views\Shared\pages\layout\fixed-topnav.html" />
-    <Content Include="Views\Shared\pages\layout\top-nav.html" />
-    <Content Include="Views\Shared\pages\widgets.html" />
-    <Content Include="Views\Shared\starter.html" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -4410,7 +4397,6 @@
     <Folder Include="app\components\users\" />
     <Folder Include="app\shared\footer\" />
     <Folder Include="app\shared\navigation\" />
-    <Folder Include="app\shared\services\" />
     <Folder Include="assets\client\" />
   </ItemGroup>
   <ItemGroup>
