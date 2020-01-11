@@ -66,7 +66,8 @@ namespace Service
         /// <returns></returns>
         public IEnumerable<ProductCategory> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return _productCategoryRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            IEnumerable<ProductCategory> rs = _productCategoryRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            return rs.OrderByDescending(x => x.CreateDate).ThenBy(x => x.ID);
         }
 
         /// <summary>

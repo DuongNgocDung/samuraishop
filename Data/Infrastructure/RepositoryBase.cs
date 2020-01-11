@@ -148,9 +148,8 @@ namespace Data.Infrastructure
             {
                 _resetSet = predicate != null ? dataContext.Set<T>().Where<T>(predicate) : dataContext.Set<T>();
             }
-
-            _resetSet = skipCount == 0 ? _resetSet.Take(size) : _resetSet.Skip(skipCount).Take(size);
             total = _resetSet.Count();
+            _resetSet = skipCount == 0 ? _resetSet.Take(size) : _resetSet.Skip(skipCount).Take(size);
             return _resetSet;
         }
 

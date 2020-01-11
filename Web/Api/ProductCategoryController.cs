@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Model.Models;
 using Service.Interface;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -16,7 +17,7 @@ namespace Web.api
     {
         private IProductCategoryService _productCategoryService;
 
-        public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService) 
+        public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService)
             : base(errorService)
         {
             this._productCategoryService = productCategoryService;
@@ -140,14 +141,23 @@ namespace Web.api
         /// <param name="pageSize"></param>
         /// <param name="totalRow"></param>
         /// <returns></returns>
-        [HttpPost]
         [Route("get-all-paging")]
-        public HttpResponseMessage GetAllPaging(HttpRequestMessage request, int page, int pageSize, out int totalRow)
+        public HttpResponseMessage GetAllPaging(HttpRequestMessage request, int page, int pageSize)
         {
+            int totalRow = 0;
             var listDataModel = _productCategoryService.GetAllPaging(page, pageSize, out totalRow);
             var listViewModel = Mapper.Map<List<ProductCategoryViewModel>>(listDataModel);
-            HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listViewModel);
-            return CreateHttpResponse(request, () => { return response; });
+
+            var paginationSet = new PaginationSet<ProductCategoryViewModel>
+            {
+                Items = listViewModel,
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+            };
+
+            HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+            return response;
         }
 
         /// <summary>
