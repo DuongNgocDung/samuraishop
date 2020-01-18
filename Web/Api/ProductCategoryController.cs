@@ -29,7 +29,6 @@ namespace Web.api
         /// <param name="request"></param>
         /// <param name="vModel"></param>
         /// <returns></returns>
-        [HttpPost]
         [Route("add")]
         public HttpResponseMessage Add(HttpRequestMessage request, ProductCategoryViewModel vModel)
         {
@@ -60,7 +59,6 @@ namespace Web.api
         /// <param name="request"></param>
         /// <param name="vModel"></param>
         /// <returns></returns>
-        [HttpPost]
         [Route("update")]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel vModel)
         {
@@ -91,7 +89,6 @@ namespace Web.api
         /// <param name="request"></param>
         /// <param name="vModel"></param>
         /// <returns></returns>
-        [HttpPost]
         [Route("delete")]
         public HttpResponseMessage Delete(HttpRequestMessage request, ProductCategoryViewModel vModel)
         {
@@ -120,7 +117,6 @@ namespace Web.api
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpGet]
         [Route("get-all")]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {

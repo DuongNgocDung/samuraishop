@@ -1,0 +1,18 @@
+﻿.table-by-me{
+
+}
+.table-by-me td {
+    cursor: pointer;
+}
+.button-master-by-me{
+    width: 100%;
+    font-weight: 900;
+}
+.required-field {
+    color: red;
+    font-weight: 900;
+}
+.form-by-me{
+    margin-left: 15px;
+    margin-right: 15px;
+}
